@@ -1,6 +1,6 @@
 'use strict';
 
-const numberOfFilms = prompt('Сколько фильмов вы уже посмотрели?');
+const numberOfFilms = +prompt('Сколько фильмов вы уже посмотрели?');
 
 const personalMovieDB = {
     count: numberOfFilms,
@@ -23,5 +23,16 @@ for (let i = 1; i <= 2; i++) {
     personalMovieDB.movies[a] = b;
 }
 
-console.log(personalMovieDB);
+if (personalMovieDB.count > 0 && personalMovieDB.count <= 10) {
+    alert('Просмотрено довольно мало фильмов!');
+} else if (personalMovieDB.count > 10 && personalMovieDB.count <= 30) {
+    alert('Вы классический зритель!');
+} else if (personalMovieDB.count > 30) {
+    alert('Вы киноман!');
+} else {
+    alert('Призошла ошибка!');
+}
 
+console.log(personalMovieDB.count);
+
+console.log(NaN === 0);
