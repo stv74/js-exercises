@@ -120,7 +120,7 @@ const personalPlanPeter = {
     name: "Peter",
     age: "29",
     skills: {
-        languages: ['ru', 'eng'],
+        languages: ['ru', 'eng', 'de'],
         programmingLangs: {
             js: '20%',
             php: '10%',
@@ -132,7 +132,7 @@ const personalPlanPeter = {
     showAgeAndLangs: function (obj) {
         let {age, skills: {languages}} = obj;
         const lang = languages.join(', ').toUpperCase();
-        return `Мне ${age} и я владею языками ${lang}`; 
+        return `Мне ${age} и я владею языками: ${lang}`; 
     }   
 };
 
@@ -155,3 +155,66 @@ function showProgrammingLangs(obj) {
 }
 
 console.log(showProgrammingLangs(personalPlanPeter));
+
+// Exercise 11
+function showFamily(family) {
+    if (family.length === 0) {
+        return 'Семья пуста';
+    }
+    let str = 'Семья состоит из:';
+    family.forEach(function(name) {
+        str += ` ${name}`;
+    }); 
+    return str;
+}
+const family = ['Ann', 'Peter', 'Zoe'];
+console.log(showFamily(family));
+
+function standardizeStrings(arrStrings) {
+    let str = '';
+    arrStrings.forEach(function(item) {
+        str += `${item.toLowerCase()}\n`;
+    });
+    return str;
+}
+
+const arrStrings = ['RomE', 'lisSAboN', 'BERLiN'];
+console.log(standardizeStrings(arrStrings));
+
+// Exersice 12
+
+function reverse(str) {
+    if (typeof str !== 'string') {
+        return 'Ошибка!';
+    }
+    let strResult = '';
+    for (let i = 0; i < str.length; i++) {
+        strResult += str.at(-(i + 1));
+    }
+    return strResult;
+}
+
+console.log(reverse('This is some strange string'));
+
+const baseCurrencies = ['USD', 'EUR'];
+const additionalCurrencies = ['UAH', 'RUB', 'CNY'];
+
+function availableCurr(allCurrencies, outCurrencies) {
+    if (allCurrencies.length == 0) {
+        return "Нет доступных валют.";
+    }
+    let strResult = 'Доступные валюты:\n';
+    allCurrencies.forEach(function(item) {
+        if (item !== outCurrencies) {
+            strResult += `${item}\n`;
+        }
+    });
+    return strResult;
+}
+
+function callAvailableCurr(baseCurrencies, additionalCurrencies, outCurrencies) {
+    const allCurrencies = baseCurrencies.concat(additionalCurrencies);
+    return availableCurr(allCurrencies, outCurrencies);
+}
+
+console.log(callAvailableCurr(baseCurrencies, additionalCurrencies, 'RUB'));
