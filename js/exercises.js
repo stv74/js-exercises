@@ -218,3 +218,69 @@ function callAvailableCurr(baseCurrencies, additionalCurrencies, outCurrencies) 
 }
 
 console.log(callAvailableCurr(baseCurrencies, additionalCurrencies, 'RUB'));
+
+// Exersice 13
+const shoppingMallData = {
+    shops: [
+        {
+            width: 10,
+            length: 5
+        },
+        {
+            width: 15,
+            length: 7
+        },
+        {
+            width: 20,
+            length: 5
+        },
+        {
+            width: 8,
+            length: 10
+        }
+    ],
+    height: 5,
+    moneyPer1m3: 30,
+    budget: 50000
+}
+
+function isBudgetEnough(data) {
+    let {shops, height, moneyPer1m3, budget} = data;
+    if ((typeof shops === 'undefined' || !Array.isArray(shops)) || (typeof height === 'undefined' || typeof height !== 'number') || (typeof moneyPer1m3 === 'undefined' || typeof moneyPer1m3 !== 'number') || (typeof budget === 'undefined' || typeof budget !== 'number')) {
+        return 'Неверные данные';
+    }
+    let s = 0;
+    for (let i of shops) {
+        if (typeof i === 'object') {
+            let {width, length} = i;
+            s += width * length;
+        } else {
+            return 'Неверные данные';
+        }
+    }
+    let v = s * height;
+    if (v * moneyPer1m3 <= budget) {
+        return 'Бюджета достаточно';
+    } else {
+        return 'Бюджета не достаточно';
+    }
+}
+
+console.log(isBudgetEnough(shoppingMallData));
+
+// Exersice 14
+
+const students = ['Peter', 'Andrew', 'Ann', 'Mark', 'Josh', 'Sandra', 'Cris', 'Bernard', 'Takesi', 'Sam'];
+
+function sortStudentsByGroups(arr) {
+    const resArr = [];
+    arr.sort();
+    resArr.push(arr.slice(0, 3));
+    resArr.push(arr.slice(3, 6));
+    resArr.push(arr.slice(6, 9));
+    let string = `Оставшиеся студенты: ${(arr.length > 9) ? arr.slice(9).join(', ') : '-'}`;
+    resArr.push(string);
+    return resArr;
+}
+
+console.log(sortStudentsByGroups(students));

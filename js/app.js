@@ -1,19 +1,16 @@
 'use strict';
 
-let numberOfFilms;
-
 const personalMovieDB = {
-    count: numberOfFilms,
+    count: 0,
     movies: {},
     actors: {},
     genres: [],
-    privat: false,
+    privat: true,
     start: function() {
         do {
-            numberOfFilms = +prompt('Сколько фильмов вы уже посмотрели?');
+            personalMovieDB.count = +prompt('Сколько фильмов вы уже посмотрели?');
         } 
-        while (! numberOfFilms);
-        personalMovieDB.count = numberOfFilms;
+        while (! personalMovieDB.count);
     },
     askQuestions: function() {
         for (let i = 1; i <= 2; i++) {
@@ -54,8 +51,13 @@ const personalMovieDB = {
             while (!genre || genre.length > 50);
             personalMovieDB.genres[i - 1] = genre;
         }
+        personalMovieDB.genres.forEach(function(genre, i) {
+            console.log(`Любимый жанр ${i + 1} - это ${genre}`);
+        });
+    },
+    toggleVisibleMyDB: function() {
+        personalMovieDB.privat = personalMovieDB.privat ? false : true;
     }
 };
 
-personalMovieDB.start();
-console.log(personalMovieDB);
+personalMovieDB.writeYourGenres();
