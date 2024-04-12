@@ -181,7 +181,7 @@ function standardizeStrings(arrStrings) {
 const arrStrings = ['RomE', 'lisSAboN', 'BERLiN'];
 console.log(standardizeStrings(arrStrings));
 
-// Exersice 12
+// Exercise 12
 
 function reverse(str) {
     if (typeof str !== 'string') {
@@ -219,7 +219,7 @@ function callAvailableCurr(baseCurrencies, additionalCurrencies, outCurrencies) 
 
 console.log(callAvailableCurr(baseCurrencies, additionalCurrencies, 'RUB'));
 
-// Exersice 13
+// Exercise 13
 const shoppingMallData = {
     shops: [
         {
@@ -268,8 +268,7 @@ function isBudgetEnough(data) {
 
 console.log(isBudgetEnough(shoppingMallData));
 
-// Exersice 14
-
+// Exercise 14
 const students = ['Peter', 'Andrew', 'Ann', 'Mark', 'Josh', 'Sandra', 'Cris', 'Bernard', 'Takesi', 'Sam'];
 
 function sortStudentsByGroups(arr) {
