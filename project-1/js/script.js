@@ -24,28 +24,30 @@ const movieDB = {
     ]
 };
 
-const adv = document.querySelector('.promo__adv');
+const adv = document.querySelectorAll('.promo__adv img'),
+      poster = document.querySelector('.promo__bg'),
+      genre = poster.querySelector('.promo__genre'),
+      listOfMovies = document.querySelector('.promo__interactive-list');
 
-adv.querySelector('.promo__adv-title').remove();
+adv.forEach(item => {
+    item.remove();
+});
 
-adv.querySelectorAll('img').forEach(img => {
-    img.remove();
-})
+genre.textContent = 'Драма';
 
-document.querySelector('.promo__genre').textContent = 'Драма';
+poster.style.backgroundImage = 'url(img/bg.jpg) center center/cover no-repeat';
 
-document.querySelector('.promo__bg').style.background = 'url(img/bg.jpg) center center/cover no-repeat';
+listOfMovies.innerHTML = '';
 
-const listOfMovies = document.querySelector('.promo__interactive-list');
+movieDB.movies.sort();
 
-let {movies} = movieDB;
-movies.sort();
+movieDB.movies.forEach((film, i) => {
+    listOfMovies.innerHTML += `
+        <li class="promo__interactive-item">${i+1}. ${film} 
+            <div class="delete"></div>
+        </li>
+    `;
+});
 
-movies.forEach
 
-
-
-// function watchedMovies (movies) {
-
-// }
 
